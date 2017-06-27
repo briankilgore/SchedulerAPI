@@ -3,23 +3,19 @@
     "name": "db",
     "connector": "memory"
   },
-  "emailDs": {
-    "name": "emailDs",
-    "connector": "mail",
-    "transports": [
-      {
-        "type": "smtp",
-        "host": "smtp.gmail.com",
-        "secure": true,
-        "port": 465,
-        "tls": {
-          "rejectUnauthorized": false
-        },
-        "auth": {
-          "user": "email@address.com",
-          "pass": "password"
-        }
-      }
-    ]
+  "mongodb": {
+    "host": "localhost",
+    "port": 32768,
+    "database": "schedulerapp",
+    "password": "",
+    "name": "mongodb",
+    "user": "",
+    "connector": "mongodb"
+  },
+  "mailgun": {
+    "name": "mailgun",
+    "connector": "loopback-connector-mailgun",
+    "apikey": "key-2c2cb541afdc39716015b7884f9ba7fa",
+    "domain": "mg.brianleekilgore.com"
   }
 }

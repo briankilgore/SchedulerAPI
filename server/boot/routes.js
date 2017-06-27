@@ -11,7 +11,7 @@ module.exports = function(app) {
 
   //login page
   app.get('/', function(req, res) {
-    var credentials = dsConfig.emailDs.transports[0].auth;
+    var credentials = dsConfig.mailgun.transports[0].auth;
     res.render('login', {
       email: credentials.user,
       password: credentials.pass

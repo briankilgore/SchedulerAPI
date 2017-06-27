@@ -14,9 +14,8 @@ module.exports = function(User) {
       to: user.email,
       from: 'noreply@loopback.com',
       subject: 'Thanks for registering.',
-      template: path.resolve(__dirname, '../../server/views/verify.ejs'),
-      redirect: '/verified',
-      user: user
+      verifyHref: 'http://brianleekilgore.com/verify?uid=' + user.id,
+      template: path.resolve(__dirname, '../../server/views/verify.ejs')
     };
 
     user.verify(options, function(err, response) {
@@ -24,26 +23,22 @@ module.exports = function(User) {
         User.deleteById(user.id);
         return next(err);
       }
-      context.res.render('response', {
-        title: 'Signed up successfully',
-        content: 'Please check your email and click on the verification link ' +
-            'before logging in.',
-        redirectTo: '/',
-        redirectToLinkText: 'Log in'
-      });
+
+      next();
     });
   });
   
   // Method to render
   User.afterRemote('prototype.verify', function(context, user, next) {
-    context.res.render('response', {
-      title: 'A Link to reverify your identity has been sent '+
-        'to your email successfully',
-      content: 'Please check your email and click on the verification link '+
-        'before logging in',
-      redirectTo: '/',
-      redirectToLinkText: 'Log in'
-    });
+    next();
+    // context.res.render('response', {
+    //   title: 'A Link to reverify your identity has been sent '+
+    //     'to your email successfully',
+    //   content: 'Please check your email and click on the verification link '+
+    //     'before logging in',
+    //   redirectTo: '/',
+    //   redirectToLinkText: 'Log in'
+    // });
   });
 
   //send password reset link when requested

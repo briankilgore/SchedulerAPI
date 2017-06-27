@@ -8,7 +8,7 @@
     ]
   },
   "User": {
-    "dataSource": "db",
+    "dataSource": "mongodb",
     "public": false
   },
   "AccessToken": {
@@ -28,10 +28,10 @@
     "public": false
   },
   "Email": {
-    "dataSource": "emailDs"
+    "dataSource": "mailgun"
   },
   "user": {
-    "dataSource": "db",
+    "dataSource": "mongodb",
     "public": true,
     "options": {}
   }
